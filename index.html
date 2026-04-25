@@ -1,100 +1,168 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Shailesh Sonare - Resume</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-            line-height: 1.6;
-            color: #333;
-        }
-        h1, h2 {
-            color: #2c3e50;
-        }
-        .section {
-            margin-bottom: 25px;
-        }
-        .title {
-            border-bottom: 2px solid #2c3e50;
-            padding-bottom: 5px;
-            margin-bottom: 10px;
-        }
-        ul {
-            margin: 0;
-            padding-left: 20px;
-        }
-    </style>
+<meta charset="UTF-8">
+<title>Shailesh Sonare - Dynamic Resume</title>
+
+<style>
+    body {
+        font-family: 'Segoe UI', sans-serif;
+        margin: 0;
+        background: #f4f6f8;
+        color: #333;
+        transition: 0.3s;
+    }
+
+    .dark {
+        background: #1e1e1e;
+        color: #fff;
+    }
+
+    .container {
+        max-width: 900px;
+        margin: auto;
+        padding: 20px;
+    }
+
+    .card {
+        background: white;
+        padding: 20px;
+        margin: 15px 0;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        transition: 0.3s;
+    }
+
+    .dark .card {
+        background: #2b2b2b;
+    }
+
+    h1 {
+        margin-bottom: 5px;
+    }
+
+    .toggle-btn {
+        float: right;
+        padding: 8px 15px;
+        border: none;
+        background: #007bff;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+
+    .section-title {
+        cursor: pointer;
+        color: #007bff;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .skills span {
+        display: inline-block;
+        background: #007bff;
+        color: white;
+        padding: 5px 10px;
+        margin: 5px;
+        border-radius: 20px;
+        font-size: 12px;
+    }
+
+    .dark .skills span {
+        background: #00c3ff;
+    }
+</style>
 </head>
+
 <body>
 
-    <h1>Shailesh Sonare</h1>
-    <p><strong>Engineering Manager | Full Stack Developer | DevOps Enthusiast</strong></p>
-    <p>Email: your.email@example.com | Phone: +91-XXXXXXXXXX</p>
-    <p>Location: Mumbai, India</p>
+<div class="container">
 
-    <div class="section">
-        <h2 class="title">Professional Summary</h2>
-        <p>
-            Results-driven Engineering Manager with experience in building scalable applications,
-            leading development teams, and implementing DevOps practices. Skilled in React, Node.js,
-            Go, PHP, and cloud technologies. Passionate about mentoring, knowledge sharing, and delivering
-            high-quality software solutions.
+    <button class="toggle-btn" onclick="toggleTheme()">Toggle Theme</button>
+
+    <h1>Shailesh Sonare</h1>
+    <p><strong>Engineering Manager | Full Stack | DevOps</strong></p>
+    <p>Mumbai, India</p>
+
+    <div class="card">
+        <h2 class="section-title" onclick="toggleSection('summary')">Professional Summary</h2>
+        <p id="summary">
+            Engineering Manager with expertise in scalable systems, DevOps practices,
+            and full-stack development. Passionate about mentoring and building high-performance teams.
         </p>
     </div>
 
-    <div class="section">
-        <h2 class="title">Skills</h2>
-        <ul>
-            <li><strong>Frontend:</strong> React.js, HTML, CSS, JavaScript</li>
-            <li><strong>Backend:</strong> Node.js, Go, PHP, Perl</li>
-            <li><strong>DevOps:</strong> Docker, Nginx, Postfix, CI/CD, Ansible</li>
-            <li><strong>Database:</strong> MySQL, Redis</li>
-            <li><strong>Tools:</strong> Git, VS Code, Linux</li>
+    <div class="card">
+        <h2 class="section-title" onclick="toggleSection('skills')">Skills</h2>
+        <div id="skills" class="skills"></div>
+    </div>
+
+    <div class="card">
+        <h2 class="section-title" onclick="toggleSection('experience')">Experience</h2>
+        <ul id="experience">
+            <li>Leading PowerInbox development (React + Backend)</li>
+            <li>Managing KRAs and team delivery</li>
+            <li>Designing scalable architecture</li>
         </ul>
     </div>
 
-    <div class="section">
-        <h2 class="title">Work Experience</h2>
-        <p><strong>Engineering Manager</strong></p>
-        <ul>
-            <li>Leading development of PowerInbox admin panel (React + backend systems)</li>
-            <li>Managing team deliverables, KRAs, and project execution</li>
-            <li>Designing scalable architecture and migration scripts</li>
-            <li>Implementing monitoring and DevOps practices</li>
+    <div class="card">
+        <h2 class="section-title" onclick="toggleSection('projects')">Projects</h2>
+        <ul id="projects"></ul>
+    </div>
+
+    <div class="card">
+        <h2 class="section-title" onclick="toggleSection('teaching')">Teaching</h2>
+        <ul id="teaching">
+            <li>Node.js & DevOps sessions</li>
+            <li>TechPaathshala mentor</li>
         </ul>
     </div>
 
-    <div class="section">
-        <h2 class="title">Projects</h2>
-        <ul>
-            <li><strong>PowerInbox:</strong> Email flow management system with reporting and admin panel</li>
-            <li><strong>Cquiz:</strong> Quiz platform with RBAC, reporting, and test management</li>
-        </ul>
-    </div>
+</div>
 
-    <div class="section">
-        <h2 class="title">Teaching & Knowledge Sharing</h2>
-        <ul>
-            <li>Conducted sessions on Node.js, Express, DevOps, and AI</li>
-            <li>Regular mentor in TechPaathshala sessions</li>
-        </ul>
-    </div>
+<script>
+    const skillsData = [
+        "React", "Node.js", "Go", "PHP", "DevOps",
+        "Docker", "Nginx", "MySQL", "Redis", "Ansible"
+    ];
 
-    <div class="section">
-        <h2 class="title">Education</h2>
-        <p>Bachelor's Degree in Computer Science (or relevant field)</p>
-    </div>
+    const projectsData = [
+        "PowerInbox - Email Flow System",
+        "Cquiz - Quiz Management Platform"
+    ];
 
-    <div class="section">
-        <h2 class="title">Additional Information</h2>
-        <ul>
-            <li>Strong leadership and team management skills</li>
-            <li>Experience in system design and scalability</li>
-            <li>Passionate about learning new technologies</li>
-        </ul>
-    </div>
+    function loadSkills() {
+        const container = document.getElementById("skills");
+        skillsData.forEach(skill => {
+            const span = document.createElement("span");
+            span.innerText = skill;
+            container.appendChild(span);
+        });
+    }
+
+    function loadProjects() {
+        const container = document.getElementById("projects");
+        projectsData.forEach(project => {
+            const li = document.createElement("li");
+            li.innerText = project;
+            container.appendChild(li);
+        });
+    }
+
+    function toggleTheme() {
+        document.body.classList.toggle("dark");
+    }
+
+    function toggleSection(id) {
+        document.getElementById(id).classList.toggle("hidden");
+    }
+
+    loadSkills();
+    loadProjects();
+</script>
 
 </body>
 </html>
